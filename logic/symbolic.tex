@@ -1,0 +1,262 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\comp}[1]{\overline{#1}}
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
+\renewcommand{\implies}{\rightarrow}
+\newcommand{\entails}{\vdash}
+\newcommand{\bicond}{\leftrightarrow}
+
+\begin{document}
+
+\section{Symbolic language}
+\subsection{Statements}
+
+\begin{define}
+	Statement is a sentence that is either true or false.
+\end{define}
+
+\begin{define}
+	Substatement is a part of a statement that could be considered a statement
+	on its own.
+\end{define}
+
+\begin{define}
+	A simple statement is a statement that does not properly contain any
+	substatements.
+\end{define}
+
+\begin{define}
+	A compound statement is a statement that contains two or more substatements.
+\end{define}
+
+\begin{define}
+	A connective is a connecting word or group of words that connects
+	substatements in a compound statement.
+\end{define}
+
+The five basic connectives are negation, conjunction, disjunction, conditional
+and biconditional.
+
+Given statements $A$ and $B$, we use these connectives to construct new
+statements.
+
+When a sentence contains free variables it is not a statement since we cannot
+say whether it is true or false, but we can make it one by substituting names of
+concrete objects for occurences of free variables in a sentence.
+
+\subsection{Converting language to symbols}
+
+We will use letters to represent logical statements and substatements, and the
+symbols $\neg, \land, \lor, \rightarrow, \leftrightarrow$ to represent negation,
+conjunction, disjuntion, conditional and biconditioncal connectives,
+respectively.
+
+\subsection{Logical Analysis}
+
+We establish the truth tables of the basic connectives.
+
+\begin{define}
+	Truth value is the property of being true or false.
+\end{define}
+
+Even though there are infinitely many statements that can be assigned to a
+statement variables each statement is either true or false. Therefore, in a
+logical statement with a finite number of statement variables, there is
+a finite number of truth assignments to the variables.
+
+\subsection{Tautologies and contradictions}
+
+\begin{define}
+	Tautology is a logical statement that is always true for all possible truth
+	values of its variable substatements.
+\end{define}
+
+The list of simple tautologies:
+\begin{enumerate}
+	\item $p \implies p$
+	\item $p \bicond p$
+	\item $p \vee \neg p$ The law of excluded middle.
+	\item $\neg(p \wedge \neg p)$ The law of contradiction.
+\end{enumerate}
+
+\begin{define}
+	Contradiction is a statement that is always false, regardless of the truth
+	values of its variable substatements.
+\end{define}
+
+Negation of a tautology is a contradiction and negation of a
+contradiction is a tautology.
+
+Implication $A \implies B$ can only be a contradiction if $A$ is a tautology and
+$B$ is a contradiction.
+
+\begin{thm}[Substitution Rule]
+	Suppose $A$ is a logical statement involving substatement variables
+	$p_1,p_2,\ldots,p_m$. If $A$ is logically true or logically false, then so
+	is every statement obtained from $A$ by replacing each statement variable
+	$p_i$ by some logical statement $B_i$, for every possible collection of
+	logical statements $B_1,B_2,\ldots,B_m$.
+\end{thm}
+
+\begin{define}
+	A statement $A$ logically implies a statement $B$ if the conditional $A
+	\implies B$ is a tautology.
+\end{define}
+
+\section{Logical equivalence}
+
+\subsection{Equivalence}
+
+\begin{define}
+	Statements $A$ and $B$ are logically equivalent if and only $A \bicond B$ is a
+	tautology. 
+\end{define}
+
+Logical equivalence has the follwoing properties:
+\begin{enumerate}
+	\item It is reflexive. That is, $A \equiv B$ is true for every $A$.
+	\item It is symmetric. That is, whenever $A \equiv B$, then also $B \equiv
+		A$.
+	\item It is transitive. That is, whenever $A \equiv B$ and $B \equiv C$,
+		then also $A \equiv C$.
+	\item Every pair of tautologies is an equivalent pair of logical statements.
+	\item Every pair of contradictions is an equivalent pair of logical
+		statements.
+\end{enumerate}
+
+\begin{thm}[Substitution Rules]
+	\begin{enumerate}
+		\item Replacing a substatement by an equivalent one. Suppose $A$ is a
+			logical statement and $X$ is a substatement of $A$. If a statement
+			$Y$ is equivalent to $X$, then the new statement $A'$ obtained from
+			$A$ by replacing substatement $X$ by $Y$ is equivalent to $A$. That
+			is, if $Y \equiv X$ then $A'\equiv A$.
+		\item Substituting into a known equivalence. Suppose $A$ and $B$ are
+			logical statements, each of which involves substatement variables
+			$p_1,p_2,\ldots,p_m$. If $A$ and $B$ are equivalent, then so are new
+			statements $A'$ and $B'$ obtained by applying substitution $p_i=C_i$
+			to both $A$ and $B$, for every collection of statements
+			$C_1,C_2,\ldots,C_m$.
+	\end{enumerate}
+\end{thm}
+
+\section{Language as an algebra}
+
+We can treat negation and disjuction as operations on the set of sentences of
+the propositional calculus. There is associated with the propositional calculus
+a natural algebraic structure whose universe is the set of all sentences and
+whose operations are negation and disjunction.
+
+A finite sequence is a function $x$ whose domain is the set of natural numbers
+smaller than some fixed natural number $n$, that is, the set
+$\set{0,\ldots,n-1}$. It is customary to denote the value of $x$ at $i$ by
+$x_i$, where $0 \leq i < n$. If $n = 0$, then $x$ is the empty function.
+
+There is a natural binary operation on finite sequences. If $x$ and $y$ are
+finite sequences, so is $xy$. If $x$ and $y$ are of lengths $m$ and $n$
+respectively, then $xy$ is of length $m + n$. The values of $xy$ are given by
+\[
+	(xy)_i=
+	\begin{cases}
+		x_i\quad\textrm{if}\ i < m \\
+		y_{i - m}\quad\textrm{if}\ i \geq m \\
+	\end{cases}
+\]
+where $0 \leq i < m + n$. The operation $xy$ is called concatenation. The
+operation of concatenation is associative. The set of all non-emtpy finite
+sequences of $A$ is called the free semigroup generated by $A$. If we add the
+empty sequence to the set above, the semigroup acquires a unit.j
+
+
+\section{Theorems}
+
+\subsection{Axioms of propositional calculus}
+
+We can specify the set of all axioms of the propositional calculus either using
+axiom schemata or by substitution rules.
+
+\begin{enumerate}[label=T\arabic*, left=0pt]
+	\item $x \lor x \implies x$.
+	\item $x \implies x \lor y$.
+	\item $x \lor y \implies y \lor x$.
+	\item $(x \implies y) \implies (z\lor x \implies z \lor y)$.
+\end{enumerate}
+
+Define a binary operation on the set of all sentences, denoted $\mu$ and called
+modus ponens, such that, if $x$ and $z$ are sentences and if $z$ has the form $x
+\implies y$, then $\mu(x,z) = y$, otherwise $\mu(x,z) = x$.
+The sentence $y$ is a theorem if and only if there exists a finite sequence of
+sentences, whose last term is $y$, such that each sentence in the sequence is
+either an axiom, or the result of applying modus ponens to some pair of
+preceding sentences in the sequence. A finite sequence with these properties is
+called a proof (a formal proof, a formal proof of $y$).
+
+\section{Formal proofs}
+
+\begin{enumerate}[label=T\arabic*, left=0pt, resume]
+	\item $\entails (x \implies y) \implies ((z \implies x) \implies (z \implies
+		y))$,
+	\item $x \implies x$,
+	\item $x \lor \neg x$,
+	\item $\entails x \implies x \lor x$,
+	\item $\entails x \implies y \lor x$, 
+	\item $\entails x \implies \neg \neg x$, 
+	\item $\entails \neg \neg x \implies x$, 
+	\item $\entails (x \implies y) \implies (\neg y \implies \neg x)$.
+\end{enumerate}
+\section{Entailment}
+
+Implication is derived binary operation on on the set of sentences of the
+propositional logic. It is defined in terms of the primitive operations.
+
+Let us introduce a binary relation, called entailment. If $x$ and $y$ are
+sentences, then the relation of entailment, denoted by $x \leq y$, means that $x
+\implies y$ is a theorem, that is, $\entails x \implies y$.
+
+\section{Logical equivalence}
+
+We introduce a new binary relation called equivalence (symbolized by $\equiv$).
+If $x$ and $y$ are sentences, then
+\begin{equation*}
+	x \equiv y
+\end{equation*}
+means, by definition, that $x\ leq y$ and $y \leq x$, that is, that both $x
+\implies y$ and $y \implies x$ are theorems.
+
+We shall show that logical equivalence is a congruent relation on the algebra of
+sentences, that is, it is compatible with propositional connectives.
+
+\section{Conjunction}
+
+Let us introduce a new propositional connective, as an abbreviation. Let $x$ and
+$y$ be sentences, then $x \land y$ means $\neg(\neg x \lor \neg y)$.
+
+Another abbreviation is a bi-implication or biconditional connective. 
+Let again $x$ and $y$ be sentences, then $x \bicond y$ means $(x \implies
+y)\land (y\implies x)$.
+
+Both conjunction and biconditional are binary operations on the set of all
+sentences of the propositional calculus. They are derived operations in the
+sense that they are defined in terms of the basic operations of negation and
+disjunction. The relation $\equiv$ is a congruence relation with respect to
+conjuction and biconditional.
+\end{document}

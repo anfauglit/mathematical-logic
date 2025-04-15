@@ -1,0 +1,229 @@
+\def\set#1{\left\{#1\right\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+%\renewcommand{\gcd}[1]{\left( #1 \right)}
+\def\abs#1{\left\vert #1 \right\vert}
+\renewcommand{\cong}[3][n]{#2 \equiv #3(\textrm{mod}\ #1)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\chardef\divideOp=`\|
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\setcomplement}[1]{\overline{#1}}
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
+\newcommand{\entails}{\vdash}
+\newcommand{\follows}{\vDash}
+\def\myfunc#1#2#3{#1 \colon #2 \to #3}
+\let\implies=\rightarrow
+\let\iff=\leftrightarrow
+
+% Symbols redefenitions
+\let\preorder\preccurlyeq
+\let\emptyset\varnothing
+\let\le\leqslant
+\let\ge\geqslant
+\let\epsilon\varepsilon
+
+% Sequence macros
+
+% A regular sequence indexed by integers with a comma as a delimiter for
+% terms.
+
+\def\finitesequence#1#2#3#4#5{%
+	%1:variable 2:first index 3:last index 4:number of initial terms
+	%5:infinity flag
+	\newcount\index
+	\index=#2
+	\advance\index by -1 % After executing the body of the loop the value of index
+	% will be equal to the number of terms already printed
+	\loop
+		\advance\index by 1 
+		#1_\number\index,
+	\ifnum\index<#4
+	\repeat
+	\ldots, #1_#3
+	\if#5i,\ldots
+	\fi
+}
+
+% Finite sequence generator
+\def\makefiniteseq#1#2#3#4{%
+    %1:sequence name and the name of a sequence variable
+    %2:first index 3:last index 4:number of initial terms 5:infinity flag
+    \expandafter\def\csname seq#1\endcsname{\finitesequence #1#2#3#4n}
+}
+
+\def\rseq#1{%1:sequence name 2:sequence variable
+    \csname seq#1\endcsname
+}
+%
+%\def\osequence#1#2#3#4#5{%
+%        %1:variable 2:first index 3:last index 4:delimiter
+%		%5:number of initial terms
+%	\newcount\index
+%	\index #2
+%	\advance\index -1
+%	%\newcount\loopindex
+%	%\loopindex #5
+%	\loop
+%		\advance\index 1
+%		#1_\the\index#4
+%        %\advance\loopindex by-1
+%	%\ifnum\loopindex>0
+%	\ifnum\index<#5
+%	\repeat
+%	\cdots#4
+%	#1_#3
+%}
+%
+%\def\makesequence#1#2#3#4#5{%
+%    %1:name
+%    %2:starting index 3:last index 4:delimiter
+%    \expandafter\def\csname seq#1\endcsname##1{\osequence ##1#2#3#4#5}
+%}
+%\def\myseq#1#2{%1:sequence name 2:sequence variable
+%    \csname seq#1\endcsname{#2}
+%}
+%
+%\def\sequence#1#2{%1:first element 2:number of elements
+%    \newcount\n
+%    \newcount\loopindex
+%    \loopindex=#2
+%    \n=#1
+%    \loop
+%    \the\n
+%    \advance\n by 1
+%    \advance\loopindex by -1
+%    \ifnum\loopindex>0
+%    ,
+%    \repeat
+%}
+%
+%\def\dsequence#1#2#3{%1:first element 2:number of elements
+%    \newcount\n
+%    \newcount\loopindex
+%    \loopindex=#2
+%    \n=#1
+%    \loop
+%    \myterm{#3}{\the\n}
+%    \if\the\n0
+%    ,
+%    \fi
+%    \advance\n by 1
+%    \advance\loopindex by -1
+%    \ifnum\loopindex=0
+%    \ldots
+%    \fi
+%    \ifnum\loopindex>0
+%    \repeat
+%}
+%\def\baseterm#1#2{%
+%	% 1 := variable
+%	% 2 := index
+%	#1_#2
+%}
+%
+%\def\modterm#1#2#3{%
+%	% 1 := variable
+%	% 2 := index
+%	% 3 := common term of a sequence
+%	\csname #3\endcsname{#1}{#2}
+%	}
+%
+%\def\abso#1#2{%
+%	\abs{\baseterm{#1}{#2}}
+%	}
+%
+%\def\base#1#2{%
+%	\baseterm{#1}{#2}
+%	}
+%
+%\def\reciprocal#1#2{%
+%	\ifcat#21
+%	\ifnum#2=1
+%	1
+%	\else\frac{1}{#2}
+%	\fi
+%	\else\frac{1}{#2}
+%	\fi
+%}
+%
+%\def\rise#1 by#2{%
+%	\newcount\i
+%	\newcount\n
+%	\i=#2
+%	\n=#1
+%	\loop
+%	\advance\i by -1
+%	\ifnum\i>0
+%	\multiply\n by#1
+%	\repeat
+%	\number\n
+%}
+%
+%\def\decimal#1#2{%
+%	\ifx#2n
+%	\frac{1}{10^n}
+%	\else
+%	\newcount\demon
+%	%\demon={\rise10 by2}
+%	%\number\demon
+%	%\demon=\rise10 by2
+%	%\number\demon
+%	%\frac{1}{\number\demon}
+%	\fi
+%}
+%
+%\def\reciprocalx#1#2{%
+%	\ifx#2n
+%	\frac{#2}{#2 + 1}
+%	\else
+%	\newcount\denom
+%	\denom=#2
+%	\advance\denom by1
+%	\frac{#2}{\number\denom}
+%	\fi
+%}
+%
+%\def\fterm#1#2{%
+%	f_#2(#1)
+%	}
+%
+%\def\absseq#1#2#3#4{%
+%	% 1 := variable
+%	% 2 := index
+%	% 3 := common term of a sequence
+%	% 4 := operator
+%	\newcount\index
+%	\index=#2
+%	\newcount\loopindex
+%	\loopindex=2
+%	\loop
+%		\modterm{#1}{\number\index}{#3} #4
+%	\advance\index by1
+%	\ifnum\loopindex>0
+%	\advance\loopindex by-1
+%	\repeat
+%	\cdots #4 \modterm{#1}{n}{#3} 
+%}
+%
+%\def\dsequence#1#2#3#4{%
+%	\newcount\index
+%	\index=#2
+%	\newcount\lindex
+%	\lindex=1
+%	\loop
+%		\term{\the\index}{#1} #4
+%	\advance\index by1
+%	\ifnum\lindex>0
+%	\advance\lindex by-1
+%	\repeat
+%	\cdots #4\term #3 #1
+%}
+%
+%\def\term#1#2{%1:variable 2:index
+%    #1_{#2}
+%}
+%
+%\def\maketerm#1#2{%1:variable
+%    \expandafter\def\csname myterm#2\endcsname##1{#1_##1}}
+%    
+%\def\myterm#1#2{\csname myterm#1\endcsname#2}

@@ -1,0 +1,47 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+\begin{document}
+Formally, the propositional calculus is the study of certain strings (finite
+sequences) of leters, made up of an alphabet of six letters. The first two
+letters are called 'not' and 'or', denoted by the symbols $\neg$ and $\lor$,
+respectively. They are called propositional connectives. The next two letters
+are $p$ and $+$, where the latter is just a suffix for repeated attaching to
+$p$, as in $p^{++++}$.
+The sentences of propositional calculus are obtained as follows:
+\begin{enumerate}
+	\item The letter $p$ followed by zero or more symbols $+$ is a sentence.
+		Sentences obtained in this way are called propositional variables.
+	\item If $x$ is a sentence then the juxtaposition of $($, $\neg$, $x$ and
+		$)$ is also
+		a sentence.
+	\item If $x$ and $y$ are sentences, then the juxtaposition of $($, $x$,
+$\lnot$, $y$ and $)$ is also a sentence.  
+\end{enumerate}
+
+The set of all variables is the smallest set of finite sequences that contains
+the one-termed sequence $p$ and that is closed under the operation of suffixing
+$+$. The set of all sentences is the smallest set of finite sequences that
+contains all variables and is closed under the operations of prefixing $\neg$
+and infixing $\lnot$. Sentences are frequently called well-formed formulas,
+abbreviated wff.
+
+\end{document}

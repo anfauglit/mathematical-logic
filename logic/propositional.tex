@@ -1,0 +1,54 @@
+The statement obtained by replacing substatement $X$ of the statement $A$ by the
+statement $Y$ which is equivalent to $X$, results in a statement $A'$ which is
+equivalent to $A$.
+
+Suppose that $A$ and $B$ are logically equivalent statements, and their common
+signature consists of the substatement variables $\set{p_1,p_2,\ldots,p_m}$.
+Then the statements $A'$ and $B'$ are also equivalent, where $A'$ and $B'$ were
+obtained by applying substitution $p_i = C_i$ to both $A$ and $B$, for every
+collection of statements $\set{C_1,C_2,\ldots,C_m}$.
+
+A proposition is a declaractive sentence that is either true or false.
+A variable that represents propositions is called a propositional variable.
+The area of logic that studies propositions is called propositional logic.
+
+Propositional logic as a formal language.
+To define a language its syntax and semantics must be defined.
+Let $S$ be an alphabet. We denote by $S^*$ the set of all strings over $S$,
+including the empty string. A formal language $L$ over the alphabet $S$ is a
+subset of $S^*$.
+The alphabet $\Sigma$ of the language $Prop$ of propositional logic.
+$$
+\Sigma = S \cup X \cup B
+$$
+, where
+$S = \set{a, a_0, a_1, \ldots, b, b_0, b_1, \ldots}$ is the set of symbols,
+$X = \set{\not, \land, \lor, \rightarrow, \leftrightarrow}$ is the set of
+logical connectives,
+$B = \set{(, )}$ is the set of parentheses.
+
+The grammar of \emph{Prop}
+$$
+<formula>::=\not<formula>
+	| (<formula> \land <formula>)
+	| (<formula> \lor <formula>)
+	| (<formula> \rightarrow <formula>)
+	| (<formula> \leftrightarrow <formula>)
+	| <symbol>
+$$
+
+Now we can determine, given a string of symbols whether it is a valid formula in
+propositional logic.
+We can associate a unique binary tree to each proposition, called the formation
+tree.
+A formation tree of a proposition $p$ has a root labeled with $p$ and satisfies
+the following rules:
+\begin{enumerate}
+	\item Each leaf is an occurrence of a propositional variable in $p$.
+	\item Each internal node with a signle successor is labeled by a subformula
+	$\not q$ of $p$ and has $q$ as a successor.
+	\item Each internal node with two successors is labeled by a subformula $(aXb)$
+	of $p$ with $X$ in $\set{\land,\lor,\rightarrow, \leftrightarrow}$ and has $a$
+	as a left successor and $b$ as a right successor.
+\end{enumerate}
+

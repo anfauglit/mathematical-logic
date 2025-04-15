@@ -1,0 +1,78 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+\begin{document}
+	A first-order language $\mathcal{L}$ is an infinite collection of distinct
+	symbols, no one of which is properly contained in another. The collection
+	includes the following categories:
+	\begin{enumerate}
+		\item Parentheses: $($, $)$.
+		\item Logical connectives: $\lor$, $\neg$.
+		\item Quantifier: $\forall$.
+		\item Variables, indexed by positive integers: $v_1,v_2,\ldots,v_n,\ldots$.
+		\item Equality symbol: $=$.
+		\item Constant symbols: A set of zero or more symbols.
+		\item Function symbols: For each positive integer $n$, a set of zero
+			or more $n$-ary function symbols.
+		\item Relation symbols: For each positive integer $n$, a set of zero or
+			more $n$-ary relation symbols.
+	\end{enumerate}
+
+	If we allowed some symbols to be proper substrings of other symbols, that
+	would make our language ambigous and context-dependent, since there would be
+	more than one way to interpret the sequence of symbols of the language.
+
+	There is an $a$ function which maps each symbol from the sets of function
+	symbols and relation symbols to a natural number, which indicates the their
+	arity.
+
+	We want to be able to refer to objects in the mathematical structures under
+	consideration.
+	An expression of $\mathcal{L}$ is a finite sequence of symbols of the
+	language $\mathcal{L}$. A term of a language is an expression which refers
+	to some object of the universe of the discourse.
+	If $\mathcal{L}$ is a language, a $\mathcal{L}$-term is a nonempty
+	expression of $\mathcal{L}$ such that either:
+	\begin{enumerate}
+		\item $t$ is a variable, or
+		\item $t$ is a constant symbol, or
+		\item $t \coloneq ft_{1}t_{2}\ldots t_{n}$ where $f$ is an $n$-ary
+			function symbol of $\mathcal{L}$ and each of the $t_i$ is a term of
+			$\mathcal{L}$.
+	\end{enumerate}
+	
+	If $\mathcal{L}$ is a language, a $\mathcal{L}$-formula is a nonempty
+	expression $\phi$ of $\mathcal{L}$ such that either:
+	\begin{enumerate}
+		\item $\phi \coloneq =t_{1}t_{2}$, where $t_1$ and $t_2$ are terms of
+			$\mathcal{L}$, or
+		\item $\phi \coloneq Rt_1t_2\ldots t_{n}$, where $R$ is an $n$-ary
+			relation symbol of $\mathcal{L}$ and $t_1, t_2, \ldots, t_n$ are all
+			terms of $\mathcal{L}$, or
+		\item $\phi \coloneq (\neg\alpha)$, where $\alpha$ is a formula of
+			$\mathcal{L}$, or
+		\item $\phi \coloneq (\alpha \lor \beta)$, where $\alpha$ and $\beta$
+			are formulas of $\mathcal{L}$, or 
+		\item $\phi \coloneq (\forall v)(\alpha)$, where $v$ is a variable and
+			$\alpha$ is a formula of $\mathcal{L}$.
+	\end{enumerate}
+
+
+\end{document}

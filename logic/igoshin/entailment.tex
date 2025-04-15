@@ -1,0 +1,82 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian,english]{babel}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+% Numbered theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+% Unnumbered theorems
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{define*}{Definition}
+\newtheorem*{lem*}{Lemma}
+\input{/home/alex/math/template.sty}
+
+% Print an arithmetic sequence
+\def\mysign#1{%
+	\ifodd#1 + 
+	\else -
+	\fi
+}
+
+\def\tseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	+ 
+    \repeat
+}
+
+\def\vseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	\mysign\loopindex 
+    \repeat
+}
+\makefiniteseq A1m2
+\makefiniteseq X1n2
+\makefiniteseq F1m2
+
+\begin{document}
+	\section{Логика высказываний}
+	\subsection{Логическое следование формул}
+	Основная задача - поиск общих способов установления связей логических
+	значений одних высказываний с логическими значениями других высказываний на
+	основании исследования формальной структуры высказываний.
+	\begin{define}
+		Формула $H(\rseq X)$ называется логическим следствием формул $F_1(\rseq
+		X),\ldots,F_m(\rseq X)$, если формула $H(\rseq X)$ превращается в
+		истинное высказывание при любом наборе значений
+		пропозициональных переменных $\rseq X$, для которого в истинное
+		высказывания превращаются все формулы $F_1(\rseq
+		X),\ldots,F_m(\rseq X)$.
+	\end{define}
+
+\end{document}

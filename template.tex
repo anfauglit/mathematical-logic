@@ -1,0 +1,66 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian,english]{babel}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+% Numbered theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+% Unnumbered theorems
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{define*}{Definition}
+\newtheorem*{lem*}{Lemma}
+\input{/home/alex/math/template.sty}
+
+% Print an arithmetic sequence
+\def\mysign#1{%
+	\ifodd#1 + 
+	\else -
+	\fi
+}
+
+\def\tseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	+ 
+    \repeat
+}
+
+\def\vseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	\mysign\loopindex 
+    \repeat
+}
+
+\begin{document}
+
+\end{document}
