@@ -1,0 +1,44 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[2]{\langle #1, #2 \rangle}
+\newcommand{\divides}{\mid} 
+\newcommand{\ndivides}{\nmid} 
+\newcommand{\abs}[1]{\left| #1 \right|}
+
+\begin{document}
+	\section{Equinumerosity}
+	Comparing finite sets, elements of which can be enumerated usnig natural
+	numbers, is easy: assign a number to each set and then compare the resulting
+	numbers. An infinite set is always bigger than a finite set.
+	Question: How to compare two infinite sets?
+	\begin{define}
+		A set $A$ is equinumerous to a set $B$ (written $A\simeq B$) if and only
+		if there is one-to-one function from $A$ onto $B$.
+	\end{define}
+
+	For any $n \in \mathbb{Z}^+$, we denote by $\[n\]$ the set
+	$\set{1,\ldots,n}$. We say that the set $\[n\]$ has $n$ elements.
+
+	An arbitrary set $S$ has $n$ elements if and only if there exists a
+	bijection $\iota \colon S \to \[n\]$.
+
+	\begin{thm}
+		The set $\mathbb{Z}^+$ is infinite.
+	\end{thm}
+
+	\begin{thm}
+		A subset of a finite set is finite.
+	\end{thm}
+
+\end{document}

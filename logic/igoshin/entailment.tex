@@ -5,6 +5,8 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[russian,english]{babel}
+\usepackage{varwidth}
+\usepackage{array}
 
 \setlength{\parindent}{0pt}
 
@@ -79,4 +81,35 @@
 		X),\ldots,F_m(\rseq X)$.
 	\end{define}
 
+	\begin{thm}
+		Следующие формулы алгебры высказываний являются тавтологиями:
+		\[
+			\begin{tabular}{@{}rl@{\quad}l}
+				a) & $P \lor \lnot P$ & закон исключенного третьего \\
+				& $\lnot (P \land \lnot P)$ & закон отрицания противоречия \\
+				& $\lnot \lnot P \iff P$ & \\
+				& $P \implies P $& \\
+				& $(P \implies Q) \iff (\lnot Q \implies \lnot P) $& \\
+				& $((P \implies Q) \land (Q \implies R)) \implies (P \implies R)
+				$& \\
+				& $(P \iff Q) \iff (\lnot P \iff \lnot Q) $& \\
+				& $P \implies (Q \implies P) $& \\
+				& $\lnot P \implies (P \implies Q)  $& \\
+			\end{tabular}
+		\]
+	\end{thm}
+
+	\begin{thm}[Свойства конъюнкции и дизъюнкции]
+		\[
+		\begin{tabular}{r l @{\qquad}r}
+			& $(P \land P) \iff P, (P \lor P) \iff P $& \\
+			& $(P \land Q) \implies P, P \implies P \lor Q $& \\
+			& $(P \land Q) \iff (Q \land P), (P \lor Q) \iff (Q \lor P) $& \\
+			& $(P \land (Q \land R)) \iff ((P \land Q) \land R) $& \\
+			& & \\
+			& & \\
+			& & \\
+		\end{tabular}
+	\]
+	\end{thm}
 \end{document}

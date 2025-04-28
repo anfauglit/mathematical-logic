@@ -1,0 +1,151 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[2]{\langle #1, #2 \rangle}
+\newcommand{\divides}{\mid} 
+\newcommand{\ndivides}{\nmid} 
+\newcommand{\abs}[1]{\left| #1 \right|}
+
+\begin{document}
+	\section{The theory of rational numbers}
+	We arrive at the rational numbers by generalising an idea of a number,
+	starting with the set of natural numbers, $\mathbb{N}$.
+	Natural numbers are closed under operations of addition and
+	multiplication, but subtraction and division are not always defined.
+	So, we have to extend natural numbers to the set of integers
+	$\mathbb{Z}$ which is closed under subtraction, and then extend integers to
+	the set of rational numbers $\mathbb{Q}$ which is closed under division by a
+	nonzero.
+
+	Alternatively, we axiomatically define a set of rational numbers and which
+	includes natural numbers and integers. We specify integers as a certain
+	proper subset of rational numbers.
+
+	\subsection{Axioms of the theory}
+
+	Rationals numbers are closed under the operations of addition and
+	multiplication.
+	\begin{align*}
+		a + b &= b + a \quad \text{Commutativity} \\
+		(a + b) + c &= a + (b + c) \quad \text{Associativity} \\
+		a + 0 &= 0 \quad \text{Additive Identity Element} \\
+		b + x & = a \quad \text{Diffirence} \\
+	\end{align*}
+
+	$\mathbb{N} \subset \mathbb{Q}$
+	\begin{define}
+		A rational number $m$ is an integer if and only $m = a - b$ for some
+		naturals numbers $a$ and $b$.
+	\end{define}
+	
+	\begin{align*}
+		ab &= ba &&\quad \text{Commutativity}\\
+		(ab)c &= a(bc) &&\quad \text{Associativity}\\
+		a(b+c) &= ab + ac &&\quad \text{Distributivity
+		of multiplication over addition}\\
+		a \cdot 1 &= a &&\quad \text{Multiplicative Identity Element}\\
+		bx &= a &&\quad \text{Quotient}
+	\end{align*}
+
+	\begin{define}
+		A rational number $c$ is a quotient of two rational numbers $a$ and $b
+		\neq 0$, denoted $\frac{a}{b}$ if and only $bc = a$.
+	\end{define}
+
+	Each rational number can be respresented as quotient of two integer numbers.
+	
+	Rational numbers are partitioned into positive, zero and negatives numbers.
+	Positive numbers are rationals which can be represented as a quotient of two
+	natural numbers, negative numbers are nonzero rationals which are not
+	positive.
+	\subsection{Properties of rational numbers}
+	
+	\begin{define}
+		\begin{itemize}
+			\item Denote $-a$ the solution to the equation $a + x = 0$, i.e. $-a = 0
+		- a$. We can call that number the inverse of $a$.
+			\item Denote $\frac{1}{a}$ the solution to the equation $ax = 1$.
+		\end{itemize}
+	\end{define}
+
+	\begin{gather*}
+		a \cdot 0 = 0\\
+		ab=0 \rightarrow a=0 \lor b =0 \\
+		a + (-a) = 0 \\
+		(-1)(-1) = 1 \\
+		-a = (-1)\cdot a\\
+		-(-a) = a \\
+		a - b = a + (-b) \\
+		-(a+b) = -a - b\\
+		-(a-b) = b - a\\
+		a(b-c) = ab - ac\\
+	\end{gather*}
+
+	Every nonnegative integer is a natural number or can be written as $-n$,
+	where $n \in \mathbb{N}$.
+
+	If $p$ and $q$ are rational numbers, then their sum and product can be
+	written as 
+	\begin{gather*}
+		p = \frac{a}{b} \\
+		q = \frac{c}{d} \\
+		p + q = \frac{ad+bc}{bd}\\
+		pq = \frac{ac}{bd}
+	\end{gather*}
+
+	The sum and the product of two positive rational numbers are positive.
+
+	\begin{define}
+		Let $a$ and $b$ be integers, and $b \neq 0$, then $b$ divides $a$ if and
+		only if the solution to the equation $bx = a$ is an integer number.
+	\end{define}
+
+	\begin{thm}
+		Let $a$ and $b$ be integers which are both divided by $m$, then their
+		sum, $a + b$, and difference, $a - b$, are divided by $m$.
+	\end{thm}
+
+	This theorem can be generalized to the case of the sum of an arbitrary
+	number of numbers.
+
+	\begin{thm}
+		Let $a_1,a_2,\ldots,a_n$ be integer numbers, such that for all $1\leq i
+		\leq n$ $m \divides a_i$, then $m \divides \sum_{i=1}^n a_i$.
+	\end{thm}
+
+	\begin{thm}
+		Let $a$ and $b$ be numbers, such that $m \divides a$ and $n \divides b$,
+		then $mn \divides ab$.
+	\end{thm}
+	\begin{thm}
+		Let $\set{a_i}$ and $\set{b_i}$ be two families of numbers, such that $b_i
+		\divides a_i$ for each $1 \leq i \leq n$, then $\prod_{i=1}^n b_i
+		\divides \prod_{i=1}^n a_i$.
+	\end{thm}
+
+	\begin{cor}
+		\begin{itemize}
+			\item If $m \divides a$, then $m^n \divides a^n$.
+			\item If one of the factors of a product is divisible by $m$, then
+				the product is divisible by $m$.
+		\end{itemize}
+	\end{cor}
+
+	\begin{thm}
+		Let $a$ and $b$ be nonzero integer numbers, then $a \divides b$ an $b
+		\divides a$ if and only $\abs{a} = \abs{b}$.
+	\end{thm}
+
+	\begin{thm}[The Division Algorithm]
+		For any $b \ge 0$ and $a$, there exist unique integers $q$ and $r$ with
+		$0 \leq r \le b$ such that $a= qb + r$.
+	\end{thm}
+\end{document}

@@ -1,27 +1,32 @@
 \documentclass[letterpaper, 10pt]{article}
-\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
 \usepackage{mathtools}
 \usepackage{enumitem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian,english]{babel}
 
 \setlength{\parindent}{0pt}
 
+\theoremstyle{definition}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{define}[thm]{Definition}
 
-\newcommand{\set}[1]{\{#1\}}
-\newcommand{\tuple}[1]{\langle #1 \rangle}
-\renewcommand{\gcd}[1]{\left( #1 \right)}
-\newcommand{\abs}[1]{\left| #1 \right|}
-\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
-\newcommand{\divides}[2]{#1 \mid #2}
-\renewcommand{\vec}[1]{\mathbf #1}
-\newcommand{\vect}[1]{\overrightarrow{#1}}
+\documentclass[letterpaper, 10pt]{article}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{define*}{Definition}
+\newtheorem*{lem*}{Lemma}
+\input{/home/alex/math/template.sty}
 
 \begin{document}
 Formally, the propositional calculus is the study of certain strings (finite
-sequences) of leters, made up of an alphabet of six letters. The first two
+sequences) of letters, made up of an alphabet of six letters. The first two
 letters are called 'not' and 'or', denoted by the symbols $\neg$ and $\lor$,
 respectively. They are called propositional connectives. The next two letters
 are $p$ and $+$, where the latter is just a suffix for repeated attaching to
@@ -43,5 +48,145 @@ $+$. The set of all sentences is the smallest set of finite sequences that
 contains all variables and is closed under the operations of prefixing $\neg$
 and infixing $\lnot$. Sentences are frequently called well-formed formulas,
 abbreviated wff.
+
+\section{Propositional Calculus}
+\subsection{Formualas}
+d(
+The propositional connectives are negation ($\neg$), conjucnction ($\land$),
+disjunction ($\lor$), implication ($\implies$), biimplication ($\iff$). The
+arity of the connectors $\land, \lor, \implies, \iff$ is equal to $2$ and the
+arity of $\neg$ is $1$.
+d)
+
+d(
+A propositional language $L$ is a set of propositional atoms $p,q,r,\ldots$. An
+atomic $L$-formula is an atom of $L$.
+d)
+
+d(
+The set of $L$-formulas is generated inductively according to the following
+rules:
+\begin{enumerate}
+	\item If $p$ is an atomic $L$-formula, then $p$ is an $L$-formula.
+	\item If $A$ is an $L$-formula, then $(\neg A)$ is an $L$-formula.
+	\item If $A$ and $B$ are $L$-formulas, then $(A \land B)$, $(A \lor B)$, $(A
+		\implies B)$, and $(A \iff B)$ are $L$-formulas.
+\end{enumerate}
+d)
+
+d(
+If $A$ is a formula, the degree of $A$ is the number of occurences of
+propositional connectives in $A$. This is the same as the number of applications
+of rules $2$ and $3$ to generate $A$ from propositional atoms.
+d)
+
+The degree of a formula $F$ is a function, which maps each formula to a natural
+number.
+$$
+deg(F) =
+\begin{cases}
+	0, & \text{if } F \text{ is a propositional atom} \\
+	1 + deg(A), & \text{if } F=(\neg A) \text{, where $A$ is a $L$-formula} \\
+	1 + deg(A) + deg(B), & \text{if } F = (A \square B) \text{, where $A$ and
+	$B$ are $L$-formulas}
+\end{cases}
+$$
+
+Now we have to prove that every $L$-formula has a unique degree.
+
+\makefiniteseq A1n2
+d(
+Let $L$ be a propositional language. A formation sequence is a finite sequence
+$\rseq A$ such that each term of the sequence is obtained from previous tersm by
+application of oen of the rules in the definition of $L$-formula. A formation
+sequence for $A$ is a formation sequence whose last term is $A$.
+d)
+
+t(
+$A$ is an $L$-formula if and only if there exists a formation sequence for $A$.
+t)
+
+d(
+A formation tree is a finite rooted dyadic tree where each ndoe carries a
+formula and each non-atomic formula branches to its immediate subformulas.
+d)
+
+t(
+Every formula $A$ has a unique formation tree which carries $A$ at its root.
+t)
+
+d(
+The set of $L$-formulas is generated inductively according to the following
+rules:
+\begin{enumerate}
+	\item If $p$ is an atomic $L$-formula, then $p$ is an $L$-formula.
+	\item If $A$ is an $L$-formula, then $(\neg A)$ is an $L$-formula.
+	\item If $A$ and $B$ are $L$-formulas and $\square$ is a binary connective,
+		then $\square A\, B$ is an $L$-formula.
+\end{enumerate}
+d)
+
+\subsection{Assignments and Satisfiability}
+
+d(
+There is a set with two distinct elements $T$ and $F$ called a truth set.
+d)
+
+d(
+Let $L$ be a propositional language. An $L$-assignment is a mapping
+$$
+M \colon \set{p \mid p \text{ is an atomic $L$-formula}} \to \set{T,F}
+$$
+d)
+
+l(
+Given an $L$-assignment $M$, there is a unique $L$-valuation
+$$
+v_M \colon \set{A \mid A \text{ is an $L$-formula} \to \set{T,F}
+$$
+given by the following clauses:
+l)
+
+You have to prove that for each $L$-formula $A$ has a truth value under
+$L$-valuation for every $L$-assignment. And also you have to prove that this
+function, $L$-valuation, is unique, i.e. if there is another function $v_M'$
+defined as above for every $L$-assignment functions $v_M$ and $v_M'$ will be
+equal.
+
+There is an obvious one-to-one correspondence between $L$-assignment and
+$L$-valuations.
+
+Fix a propositional language $L$.
+d(
+Let $M$ be an assignment. A formula $A$ is said to be true under $M$ if $v_M(A)
+= T$, and false under $M$ if $v_M(A) = F$.
+d)
+
+d(
+A set of formulas $S$ is said to be satisfiable if there exists an assignment
+$M$ which satisfies $S$, i.e., $v_M(A) = T$ for all $A \in S$.
+d)
+
+d(
+Let $S$ be a set of formulas. A formula $B$ is said to be a logical consequence
+of $S$ if it true under all assignments which satisfy $S$.
+d)
+
+d(
+A formula $B$ is said to be logically valid (or a tautology) if $B$ is true
+under all assignments. Equivalently, $B$ is a logical consequence of the empty
+set.
+d)
+
+c(
+\begin{enumerate}
+	\item $B$ is logically valid if and only if $\neg B$ is not satisfiable.
+	\item $B$ is satisfiable if and only if $\neg B$ is not logically valid.
+	\item $B$ is a logical consequence of $\rseq A$ if and only if $(A_1 \land
+		\cdots \land A_n) \implies B$ is logically valid.
+	\item $A$ is logically equivalent to $B$ if and only if $A \iff B$ is
+		logically valid.
+\end{enumerate}
+c)
 
 \end{document}

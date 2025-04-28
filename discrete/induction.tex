@@ -1,0 +1,198 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{amstext}
+\usepackage{array}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+% Numbered theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+% Unnumbered theorems
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{define*}{Definition}
+\newtheorem*{lem*}{Lemma}
+\input{/home/alex/math/template.sty}
+
+% Print an arithmetic sequence
+\def\mysign#1{%
+	\ifodd#1 + 
+	\else -
+	\fi
+}
+
+\def\tseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	+ 
+    \repeat
+}
+
+\def\vseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	\mysign\loopindex 
+    \repeat
+}
+
+\begin{document}
+\section{Recursion}
+\subsection{Recursively Defined Sets and Structures}
+	Recursive definitions of sets have two parts: a basis step and a recursive
+	step. In the basis step an initial collection of elements is specified, in
+	the recursive step rules for formning new elements from those already known
+	to be in the set are provided.
+\subsection{Exercises}
+\begin{enumerate}
+	\item Proof that every chessboard of the size $2^n\times 2^n$, where $n$ is a
+		natural number, with one square removed, can be tiled with L-trominoes.
+\end{enumerate}
+
+\section{Generalized Induction and Recursion}
+
+t((Induction principle)
+Suppose $P$ is some property of natural numbers, such that $P(0)$ is true, and
+for every natural number $n$, if $P(n)$ is true then so is $P(n+1)$. Then $P$
+holds of every number.
+t)
+
+t((The least element principle)
+Suppose $P$ is true for some natural number. Then there is a smallest natural
+number for which $P$ is true.
+t)
+
+t(
+Let $A$ be any subset of the natural numbers, with the property that $0$ is an
+element of $A$, and whenever some number $n$ is an element of $A$, so is $n +
+1$. Then $A = \mathbb{N}$.
+t)
+
+t((Recursion theorem)
+Suppose $a$ is an element of a set $A$, and $h$ is a function from $A$ to $A$.
+Then there is a unique function $g \colon \mathbb{N} \to A$, having the
+properties
+\begin{align*}
+	g(0) &= a \\
+	g(n + 1) &= h(g(n)) \text{ for every natural number $n$} \\
+\end{align*}
+t)
+
+\subsection{Inductively defined sets}
+To inductively define a set, there are two necessary conditions: we need to have a
+universal set which will be a superset for the set we are defining, and and we
+need a function or functions defined on universal set that we will use in
+the definition.
+To build something we need to have initial building blocks and methods to
+combine them into complex structures.
+In the set theory when we construct the set of natural numbers we start with the
+empty set and one operation on sets, namely the successor operator, i.e. we have
+one initial object and one function to construct objects from the ones we have
+already constructed.
+
+The set of natural numbers is the smallest set containing $0$ and closed under
+successor operation. A set is called inductive if it contains $0$ and is closed
+under the successor operation.
+$$
+\mathbb{N}^*=\bigcap\set{I \mid I \text{ is an inductive subset of } U}
+$$
+
+\begin{enumerate}
+	\item $0 \in \mathbb{N}$;
+	\item If $n \in \mathbb{N}$, then $n + 1 \in \mathbb{N}$ (closure property);
+	\item Nothing else is in $\mathbb{N}$ (minimality property).
+\end{enumerate}
+
+Another way of characterizing the set of natural numbers is to say that the
+natural numbers are the things you can get to, starting from $0$ and applying
+the successor function at most finitely many times. The set of natural numbers
+constitute of objects for which there is a formation (or construction) sequence,
+such that each term in a sequence is either $0$ or an application of the
+successor function to one of the previous terms in the sequence.
+
+\makefiniteseq f1k2
+In the more general setup, to define a set inductively we need the following:
+\begin{enumerate}
+	\item an underlying universe, $U$;
+	\item a set of initial elements, $B \subseteq U$;
+	\item a set of functions on $U$, $\rseq f$ of various arities.
+\end{enumerate}
+
+We want to define the set $C$ of objects generated from $B$ by the functions
+$f_i$.
+
+\makefiniteseq a1m1
+d(
+A subset $A$ of $U$ is inductive if $B$ is a subset of $A$, and whenever $\rseq
+a$ is in $A$ and $f_j$ is an $m$-ary function, then $f_j(\rseq a)$ is in $A$ as
+well.
+d)
+
+$$
+C^* = \bigcap\set{I \mid I \text{ is an inductive subset of } U}
+$$
+
+l(
+$C^*$ is inductive.
+l)
+
+\makefiniteseq a0k2
+d(
+A finite sequence $\tuple{\rseq a}$ of elements of $U$ is a formation sequence
+(or construction sequence) if, for each $i$, either $a_i$ is an element of $B$,
+or there is a function $f_l$ and number $j_1,\ldots, j_m$ less than $i$, such
+that $a_i = f(a_j_1, \ldots, a_j_m)$.
+d)
+
+Let $C_*$ be the set of elements $a$ in $U$ for which there is a formation
+sequence ending in $a$.
+
+l(
+$C&*$ is a subset of $C_*$.
+l)
+
+l(
+$C_*$ is a subset of $C^*$.
+l)
+
+Therefore, $C^* = C_*$.
+
+l(
+The principle of induction holds for $C$. In other words, if $D$ is any
+inductive subset of $C$, then $D = C$.
+l)
+
+t((Induction principle for $C$)
+Suppose $P$ is a property of elements of $C$, such that $P$ holds of all the
+elements of $B$, and for each function $f_i$ if $P$ holds of each of the
+elements $a_1,\ldots,a_k$, then $P$ holds of $f_i(a_i,\ldots,a_k)$. Then $P$
+holds of every element of $C$.
+t)
+\end{document}

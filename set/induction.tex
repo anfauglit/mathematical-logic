@@ -1,0 +1,132 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\theoremstyle{definition}
+\newcommand{\thistheoremname}{}
+\newtheorem{genericthm}[thm]{\thistheoremname}
+\newenvironment{namedthm}[1]
+	{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm}}
+	{\end{genericthm}}
+
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+	{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm*}}
+	{\end{genericthm*}}
+	
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3][n]{#2 \equiv #3(\textrm{mod}\ #1)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\comp}[1]{\overline{#1}}
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\entails}{\vdash}
+\newcommand{\bicond}{\Leftrightarrow}
+\newcommand{\preorder}{\preccurlyeq}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+
+\begin{document}
+
+\section{Peano Axioms}
+
+The five Peano axioms are the following:
+\begin{enumerate}[label=(\roman*)]
+	\item There is a least element of $\mathbb{N}$ that we denote by $0$.
+	\item Every natural number $a$ has a successor denoted by $s(a)$.
+	\item There is no natural number whose successor is $0$.
+	\item Distinct natural numbers have distinct successors.
+	\item If a subset of the natural numbers contains $0$ and also has the
+		property that whenever $a \in S$ it follows that $s(a) \in S$, then the
+		subset $S$ is actually equal to $\mathbb{N}$.
+\end{enumerate}
+
+\begin{thm}
+	If a proposition $P$ holds for the number $O$ and whenever $P$ holds for
+	an arbitrary natural number $n$ it also holds for its successor
+	$s(n)$, then $P$ holds for every natural number $n$.
+\end{thm}
+
+\begin{thm}
+	To prove that a proposition $P(a)$ holds for all integers. We have to show
+	that it holds for all natural numbers and for all numbers of the form $-n$,
+	where $n$ is a natural number.
+\end{thm}
+
+\begin{namedthm*}{The Extended Principle of Mathematical
+	Induction}\cite{fletcher}
+	Let $k \in \mathbb{N}$ and let $S$ be a subset of $\mathbb{N}$ such that 
+	\begin{enumerate}[label=\alph*)]
+		\item $k \in S$, and 
+		\item If $n \ge k$ and $n \in S$, then $n + 1 \in S$.
+	\end{enumerate}
+	Then $\set{n \in \mathbb{N} \mid n \ge k} \subseteq S$.
+\end{namedthm*}
+
+\begin{thm*}
+	The Principle of Mathematical Induction and the Extended
+	Principle of Mathematical Induction are equivalent.
+\end{thm*}
+
+\begin{namedthm*}{The Second Principle of Mathematical Induction}\cite{fletcher}
+	Let $S$ be a set of natural numbers with the following properties:
+	\begin{enumerate}[label=\alph*)]
+		\item $1 \in S$, and 
+		\item For each $n \in \mathbb{N}$, if $\set{1,2,\ldots,n} \subseteq S$,
+			then $n + 1 \in S$.
+	\end{enumerate}
+	Then $S = \mathbb{N}$.
+\end{namedthm*}
+
+\begin{namedthm*}{The Least Natural Number Principle}\cite{fletcher}
+	Every non-empty set of natural numbers has a least element.
+\end{namedthm*}
+
+\begin{namedthm*}{The Division Algorithm for Integers}\cite{fletcher}
+	Let $a$ be an integer and let $b$ be a natural number. Then there are
+	unique integers $q$ and $r$ such that $a = bq + r$ and $0 \le r < b$. 
+\end{namedthm*}
+
+\section*{Exercises}
+Prove the following statements:
+\begin{enumerate}
+	\item For every natural number $n \ge 5$, $n^2 < 2^n$.
+	\item For every natural number $n \ge 3$, $2n < 2^n - 1$.
+	\item Every natural number greater than $1$ is either a prime number or the
+		product of prime numbers.
+	\item $n^3 + (n + 1)^3 + (n + 2)^3$ is divisible by $9$ for every $n \ge 1$.
+	\item $3^{3n} + 1$ is divisible by $7$ whenever $n$ is an odd natural
+		number.
+	\item $2^n < n!$ whenever $n \ge 4$. 
+	\item Each integer number greater than $1$ can be factored into a product of
+		one or more primes.
+	\item The binomial $1 - x^n$ can be factored as $(1-x)(1 + x + x^2 + \cdots
+		+ x^{n-1})$.
+	\item There are $2^n$ different binary strings of length $n$.
+	\item A knight can be moved from any square to any other square on an $n
+		\times n$ chess board by some sequence of allowed moves, for every $n
+		\ge 4$.
+	\item A truth table involving $n$ statement variables requires $2^n$ rows.
+\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}

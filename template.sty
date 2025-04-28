@@ -1,5 +1,5 @@
 \def\set#1{\left\{#1\right\}}
-\newcommand{\tuple}[1]{\langle #1 \rangle}
+\newcommand{\tuple}[1]{\left< #1 \right>}
 %\renewcommand{\gcd}[1]{\left( #1 \right)}
 \def\abs#1{\left\vert #1 \right\vert}
 \renewcommand{\cong}[3][n]{#2 \equiv #3(\textrm{mod}\ #1)}
@@ -8,12 +8,19 @@
 \renewcommand{\vec}[1]{\mathbf #1}
 \newcommand{\vect}[1]{\overrightarrow{#1}}
 \newcommand{\setcomplement}[1]{\overline{#1}}
+\let\boolneg\setcomplement
 \newcommand{\powerset}[1]{\mathcal{P}(#1)}
 \newcommand{\entails}{\vdash}
 \newcommand{\follows}{\vDash}
 \def\myfunc#1#2#3{#1 \colon #2 \to #3}
-\let\implies=\rightarrow
-\let\iff=\leftrightarrow
+\let\implies\rightarrow
+\let\iff\leftrightarrow
+\let\equivx\Longleftrightarrow
+\let\impliesx\Longrightarrow
+
+\def\setdiff{\backslash}
+\def\forallx#1{\forall #1\,}
+\def\existsx#1{\exists #1\,}
 
 % Symbols redefenitions
 \let\preorder\preccurlyeq

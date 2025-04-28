@@ -1,0 +1,60 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+
+% Defining numbered environment
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{define}[thm]{Definition}
+
+% Defining a new command for the "is a divisor of" relation
+\newcommand{\divides}{\mid}
+% Defining a command for the Greatest Common Dividor
+\newcommand{\gcd}[1]{\left(#1\right)}
+
+\begin{document}
+
+\section{Real numbers}
+\subsection{Motivation for extension of rational numbers}
+
+You can solve linear equations and systems of linear equations using rational
+numbers.
+Not every monotonic bounded sequence of rational numbers converges to the limit
+that is a rational number.
+
+\begin{thm}
+    \begin{enumerate}
+        \item If $a \divides b$, then $a \divides bc$, for any $c$
+        \item If $a \divides b$ and $b \divides c$, then $a \divides c$.
+        \item If $a\divides b$ and $a \divides c$, then $a \divides (bx + cy)$ for any $x$
+        and $y$.
+        \item If $a$ and $b$ are positive integers such that $a \divides b$ and
+            $b \divides a$, then $a = b$.
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}
+    If $a \divides c$ and $a + b = c$, then $a \divides b$.
+\end{thm}
+
+\begin{define}
+    A positive integer $p$ greater than 1 is called a prime if it has no positive
+    factors other than 1 and $p$.
+\end{define}
+
+\begin{thm}
+    Every composite number has a prime factor.
+\end{thm}
+
+\begin{thm}
+    If $a \divides bc$ and $\gcd{a,b} = 1$, then $a \divides c$.
+\end{thm}
+
+\begin{thm}
+    If $a \divides c$ and $b \divides c$, and $\gcd{a,b} = 1$, then $ab
+    \divides c$.
+\end{thm}
+
+\end{document}

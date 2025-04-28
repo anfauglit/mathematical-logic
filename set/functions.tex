@@ -1,0 +1,86 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\input{/home/alex/math/template.sty} 
+\begin{document}
+
+\section{Functions}
+	Let $A$ and $B$ be sets. Let $\myfunc fAB$. Then:
+	$f$ is a \emph{total function on $A$} if for every $a \in A$ there exists an
+	element $b \in B$ such that $f(a) = b$.
+
+	$f$ is a \emph{partial function on $A$} if it is not a total function on
+	$A$.
+
+	Let $A$ and $B$ be sets. Let $\myfunc fAB$. Then $f$ maps $A$ \emph{onto}
+	$B$ or a \emph{onto function} or a \emph{surjective function} if for every
+	element $b$ of its co-domain there exists and an element $a$ in its domain such
+	that $f(a) = b$.
+
+	Let $S = \mathbb{N}$ or $S = \mathbb{Z}^+$ and $T$ be any non-empty set.
+	Then the function $\myfunc aST$ is called a \emph{sequence}. We call $a(n)$ a
+	\emph{term} of the sequence, denoted $a_n$.
+
+	Let $X$ and $Y$ be two sets. A function or a map $f$ from $X$ to $Y$,
+	denoted $f\colon X \to Y$, is an assignment of an unique element of $Y$ to
+	each element of $X$. The set $X$ is called the domain of $f$, and the set
+	$Y$ is called a codomain of $f$.
+	
+	Since an element $y$ of $Y$ is associated with each element $x \in X$ is unique
+	we can designate with a symbol $f(x)$.
+
+	Each function has its own intension, the rule by which it is defined, and
+	extension, the set of elements satisfying the specified rule. Two functions
+	can be compared by comparing either their intensions or extensions.
+	Functions are defined by their extension. Two functions $f$ and $g$ are
+	equal, and we write $f = g$, if and only if
+	their domains and codomains are equal, and for each $x\in X$ their values
+	are equal, that is, $f(x) = g(x)$.
+
+	For any set $X$, the identity function $id_X\colon X \to X$ is defined by
+	$id_X(x) = x$ for all $x\in X$. 
+
+	Let $f$ and $g$ be two functions $X\stackrel{f}{\to}Y$ and
+	$Y\stackrel{g}{\to}Z$. Define a new function $h$ from $X$ to $Z$ as a
+	composition of $g$ and $f$, denoted $g\circ f$ or $gf$ such that for all
+	$x\in X$ $g \circ f(x) = g(f(x))$.
+
+	\begin{thm*}
+		If $X\stackrel{f}{\to}Y$ then $f\circ id_X = f$ and $id_Y \circ f = f$.
+	\end{thm*}
+
+	\begin{thm}
+		Let $f\colon X\to Y$, $g\colon Y\to Z$, and $h\colon Z\to W$.
+		\begin{enumerate}
+			\item The composition of mappings is associative; that is,
+				$h\circ(g\circ f) = (h\circ g)\circ f$;
+			\item If $f$ and $g$ are both one-to-one, then the mapping $g \circ
+				f$ is one-to-one;
+			\item If $f$ and $g$ are both onto, then the mapping $g \circ f$ is
+				onto;
+			\item If $f$ and $g$ are bijective, then so is $g \circ f$.
+		\end{enumerate}
+	\end{thm}
+
+	A \emph{function} is a relation $F$ such that for each $x$ in $dom(F)$ there is
+	only one $y$ such that $xFy$.
+
+	Notation $F(x)$ for the value of the function $F$ at the point $x$ only
+	makes sense when $F$ is a function and $x\in dom(F)$.
+
+	A set $R$ is \emph{single-rooted} if and only if for each $y \in ran(R)$
+	there is only one $x$ such that $xRy$.
+
+	The \emph{inverse} of $F$ is the set
+	\[
+		F^{-1} = \set{\tuple{u,v} \mid vFu}
+	\].
+	The \emph{composition} of $F$ and $G$ is the set
+	\[
+		F \circ G = \set{\tuple{u,v} \mid \exists t (uGt \land tFv)}
+	\].
+\end{document}

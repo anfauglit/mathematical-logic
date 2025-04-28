@@ -1,0 +1,45 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\setb}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+\begin{document}
+\section{Introduction}
+We define a relation of object belonging to a set, and we write
+$x \ in A$ if $a$ is an element of $A$, and $x \not\in A$ if it is not.
+Generally, the relation $\in$ is not transitive, that is, if $p \in A$ and $A
+\in \mathcal{M}$, it does not follow that $p \in \mathcal{M}$.
+Another relation that we define for sets is a subset relation. If all elements
+of a set $A$ are also elements of a set $B$, we say that $A$ is a subset of $B$,
+and write $A \subseteq B$. The set $B$ is called a superset of $A$, and we write
+$B \supseteq A$.
+Sets are unordered collections of elements, therefore sets are fully determined
+by their elements only. We say that a set is defined by its extension.
+
+If $P(x)$ is some proposition or fomula involving a variable $x$, we shall use
+the symbol $\set{x \mid P(x)}$ to denote the set of all objects $x$ for which
+the formula $P(x)$ is true. Some authors call this set the truth set or the
+extension of $P(x)$.
+
+The family $\mathcal{M}$, a collection of sets, of indexed sets is denoted by
+$\set{X_i \mid i \in I}$, briefly $\set{X_i}$, where $i$ is a variable ranging
+over the index set $I$.
+
+\end{document}

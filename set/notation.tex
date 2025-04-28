@@ -1,0 +1,55 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\card}[1]{\lvert #1 \rvert}
+
+\begin{document}
+	\section{What is a set?}
+	A set is a collection of objects called its elements. The concept of a set
+	is introduced axiomatically. It is customary to designate a set by a
+	capitcal Roman letter, such as $A$. The first relation symbol that we define
+	is one of belonging, $\in$. We write $a\in A$ to say that an object $a$ is
+	an element of the set $A$, and to say that $a$ is not an element of $A$ we
+	will write $a\not\in A$.
+	One of the ways to describe a set is by enumerating all of its elements.
+	Certain number sets have special names reserved for them. Such sets are:
+	positive (\mathbb{P}), natural (\mathbb{N}), integers (\mathbb{Z}), rational
+	(\mathbb{Q}), real (\mathbb{R}), and complex (\mathbb{C}) numbers.
+	Another way of describing a set is to use set-builder notation.
+	$$
+	A = \set{x\mid \phi(x)}
+	$$
+	where $\phi$ is a logical formula in which $x$ is a free variable. It is
+	equalent to the following statement:
+	$$
+	x \in A \iff \phi(x)
+	$$
+
+	A finite set is a set which has a finite number of elements. A set that is
+	not finite is infinite.
+	Let $A$ be a finite set. The number of elements in a set is called its
+	cardinality and denoted by $\card{A}$.
+	Let $A$ be a nonempty set, $A\subseteq A$ and we call $A$ improper subset of
+	$A$. All other subsets of $A$ are called proper subsets. 
+	Very often you define a new set as a subset of already defined set.
+
+	We can define two binary operations for sets, namely intersection and union.
+
+	The universe, or universal set, is the set that includes all sets being
+	discussed. Every set under discussion is a subset of the universal set.
+\end{document}

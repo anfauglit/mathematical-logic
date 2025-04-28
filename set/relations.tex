@@ -1,0 +1,150 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1\rangle}
+\begin{document}
+	\section{Relations}
+
+	\begin{define}
+	The set $C$ is an ordered pair, denoted by $\tuple{x}{y}$,
+	if and only if 
+	$C = \set{\set{x},\set{x,y}}$.
+	\end{define}
+
+	The equivalence of two ordered pairs.\\
+	Generalization to ordered n-tuples.\\
+
+	Let $A$ and $B$ be sets. The Cartesian product of $A$ and $B$, denoted by
+	$A\times B$, is a set $A\times B = \set{\tuple{a,b}\mid a\in A and b\in
+	B}$.
+	Let $A$ and $B$ be sets, a binary relation between $A$ and $B$ is a subset
+	of the Cartesian product $A\times B$.
+
+	Finite relations can be represented by tables and directed graphs
+	(digraphs).
+
+	Let $R\subseteq A\times B$ be a relation, and $c=\tuple{a}{b}$ be an element
+	of $R$, then the projection of $c$ on $A$ is $a$. $a$ is called $A$-th
+	coordinate of $c$. The projection of $R$ on $A$ is the set $\set{a\in A\mid
+	\tuple{a}{b}\in R \text{ for some } b\in B}$.
+	In case of binary relations the projection of $R$ on $A$ is called the
+	domain of $R$, denoted $dom(R)$ or $R_D$, and projection of $R$ on $B$ is
+	called the range of $R$, denoted $ran(R)$ or $R_R$.
+
+	The cut of $R$ when $x=a\in A$ is the set $\set{b\in B\mid \tuple{x}{b} \in
+	R}$.
+	Let $R$ be a relation on $A$, then $A/R$ is a set of all cuts $R(x)$, where
+	$x\in A$. The function from $A$ to $\mathcal{P}(A)$ that maps each element
+	$a$ of $A$ to its cut $R(a)$, determines unambigously the relation $R$. Any
+	relation can be defined as a collection of its cuts. Most of the authors use
+	the notion 'image' instead of 'cut'. We can generalize the concept of image
+	to subsets of the domain of $R$. The image of a set $X\subseteq A$ is the
+	set $\set{y\in B\mid \tuple{x}{y} \in R \text{ for some } x\in X}$.
+
+	\begin{define}
+	If $\rho$ is a relation, then $x\rho y$ if and only if $\tuple{x}{y} \in
+	\rho$.
+	\end{define}
+
+	\begin{define}
+	If $\rho$ is a relation, then the domain of $\rho$ is the set
+	$$
+	\set{x \mid \exists y \tuple{x}{y} \in \rho}
+	$$
+	\end{define}
+
+	\begin{define}
+	If $\rho$ is a relation, then the range of $\rho$ is the set
+	$$
+	\set{y \mid \exists x \tuple{x}{y} \in \rho}
+	$$
+	\end{define}
+
+
+	\begin{define}
+		The set $C$ is called a cartesian product of the
+		two sets $X$ and $Y$, denoted $X\times Y$,
+		if and only if
+		$C = \set{\tuple{x}{y}\mid x\in X \text{ and } y\in Y}$.
+	\end{define}
+
+	\begin{lem}
+		Let $R$ be a relation and let $A = \bigcup\bigcup R$. Then $R\subseteq
+		A \times A$.
+	\end{lem}
+
+	Let $R$ be a relation on $A$, that's it $R\subseteq A\times A$.
+	Types of relations:
+	\begin{itemize}
+		\item Universal relation
+		\item Void relation
+		\item Identity relation
+		\item Reflexive relation: The relation $R$ is reflexive if and only if
+			for all $a\in A$ $\tuple{a}{a}\in R$.
+		\item Symmetric relation: The relation $R$ is symmetric if and only if
+			for all pairs of elements of $A$ $a$ and $b$ if $aRb$, then $bRa$. 
+	\end{itemize}
+
+	\subsection{Equivalence Relations}
+
+	\begin{define}
+		A relation $\rho$ in a set $X$ is an equivalence relation if and only if
+		$\rho$ is reflexive, symmetric and transitive.
+	\end{define}
+	
+	\begin{define}
+		If $\rho$ is an equivalence relation on the set $X$, then a subset $A$
+		of $X$ is an equivalence class if and only if there is a $x \in X$ such
+		that $A = \set{y\in X\mid x\rho y }$ ($A = \rho[\set{x}]$, i.e. the
+		set $A$ is an image of $\set{x}$ under $\rho$).
+	\end{define}
+
+	\begin{lem}
+		Let $\rho$ and $\sigma$ be equivalence relations, then $\rho \cap
+		\sigma$ is an equivalence relation.
+	\end{lem}
+
+	\begin{lem}
+		Let $\rho$ be an equivalence relation on $X$ and let $Y$ be a set, then
+		$\rho \cap (Y \times Y)$ is an equivalence relation on $X \cap Y$.
+	\end{lem}
+	\subsection{Functions}
+
+	\begin{define}
+		A relation $\rho$ is a function $f$ if and only if no two distinct
+		members of $\rho$ has the same first coordinate.
+		If $\tuple{x}{y} \in f$ and $\tuple{x}{z} \in f$, then $y = z$.
+	\end{define}
+	\begin{define}
+		Let $f$ be a function, and $\tuple{x}{y}$ is an element of $f$.
+		\begin{itemize}
+		\item Each element of the $dom(f)$ is called an argument of $f$.
+		\item Element $y$ of the $ran(f)$ is called the value of $f$ at $x$, or
+			the image of $x$ under $f$.
+		\end{itemize}
+	\end{define}
+	Each member of the domain of a function has a single relative.
+	A function is a single valued relation.
+
+	\begin{thm}
+		Let $f$ and $g$ be functions. Then $f = g$ if and only if $D_f = D_g$
+		and $f(x) = g(x)$ for each $x$ in the common domain.
+	\end{thm}
+	\begin{define}
+		The set of all functions on $X$ into $Y$, symbolized $Y^X$ is a subset
+		of $\mathfrak{P}(X \times Y)$.
+	\end{define}
+	\begin{align*}
+		Y^\varnothing &= \set{\varnothing} //
+		\varnothing^X &= \varnothing \text{ if } X \neq \varnothing //
+	\end{align*}
+
+\end{document}

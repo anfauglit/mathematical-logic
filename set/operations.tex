@@ -1,0 +1,120 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\renewcommand{\gcd}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\renewcommand{\cong}[3]{#1 \equiv #2 (mod\ #3)}
+\newcommand{\divides}[2]{#1 \mid #2}
+\renewcommand{\vec}[1]{\mathbf #1}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\family}[1]{\mathfrak{#1}}
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
+
+\begin{document}
+	\subsection{The Algebra of Sets}
+	Let $A$, $B$ and $C$ be any subsets of a universal set $U$, that is, $A,B,C
+	\in \powerset{U}$. The set $\powerset{U}$ is closed under operations of
+	union, intersection and complementation.
+	The following equations are identities.
+	\begin{enumerate}
+		\item $A\cup(B\cup C) = (A\cup B)\cup C$. Associative law.
+		\item $A\cup B = B\cup A$. Commutative law.
+		\item $A\cup(B\cap C) = (A\cup B)\cap(A\cup C)$. Distributive law.
+		\item $A\cup \varnothing = A$. The property of the empty set.
+		\item $A\cup A' = U$. Complementation law.
+	\end{enumerate}
+
+	\begin{enumerate}
+		\item If $A\cup B = U$ and $A\cap B = \varnothing$, then $B =
+			\overline{A}$. The uniqueness of the complement.
+		\item $\overline{\overline{A}} = A$. Double negation law.
+		\item $\overline{\varnothing} = U$.
+		\item $A \cup A = A$. Idempotent law.
+		\item $A \cup U = U$.
+		\item $A \cup (A \cap B) = A$. Absorption law.
+		\item $\overline{A \cup B} = \overline{A} \cap \overline{B}$. DeMorgan's
+			law.
+	\end{enumerate}
+
+	\subsubsection{Order}
+	The following statements about sets $A$ and $B$ are equivalent to one
+	another.
+	\begin{enumerate}
+		\item $A \subseteq B$.
+		\item $A \cap B = A$.
+		\item $A \cup B = B$.
+	\end{enumerate}
+
+	\section{Generalization of union, intersection, and cartesian product}
+	Let $\family{A}$ be a collection of sets. The union of $\family{A}$ is
+	the set, symbolized by $\bigcup\family{A}$ or $\bigcup\set{X\mid X \in
+	\family{A}}$ or $\bigcup_{X\in\family{A}}X$, and equal to:
+	$$
+	\set{x\mid x\in X \text{ for some } X\in\family{A}}
+	$$
+
+	There are two immediate consequences of the definition:
+	\begin{gather}
+		\bigcup\varnothing = \varnothing \\
+		\bigcup\set{A} = A \\
+		\bigcup\powerset{A} = A \\
+	\end{gather}
+
+	Let $\family{A}$ be a nonempty collection of sets. The intersection of
+	$\family{A}$ is the set, symbolized by $\bigcap\family{A}$ or
+	$\bigcap\set{X\mid X \in \family{A}}$ or $\bigcap_{X\in\family{A}}X$, and
+	equal to: $$ \set{x\mid x\in X \text{ for all } X\in\family{A}} $$
+
+	We can remove the restriction on the collection being nonempty by specifying
+	the universal set $U$, and then modifying the defition of the intersection
+	of the collection of the subsets of $U$.
+	$$
+	\bigcap\family{A} = \set{x\in U\mid x\in X \text{ for all } X\in\family{A}}
+	$$
+	In this case, the intersection of the empty collection is equal to the
+	universal set $U$:
+	$$
+	\bigcap_{X\in\varnothing}X = U
+	$$
+
+	Suppose that $y$ is a function on a set $I$ into a set $Y$. Call an element
+	$i\in I$ an index, $I$ itself an index set, the range of $y$ an indexed set,
+	and the function $y$ itself a family.
+	$$
+	y = \set{\tuple{i,y_i}\in I\times Y\mid i \in I} \\
+	ran(y) = \set{y_i\mid i\in I}
+	$$
+
+	A family $y$ can be also symbolized by $\set{y_i}$ where $i\in I$, or just
+	$\set{y_i}$ if the domain is clear from the context.
+
+	A sequence is a type of family where the index set is either equal to
+	$\mathbb{N}$ or $\mathbb{N}_0$.
+
+	A family $\set{A_i}$ of subsets of $U$ is a function $A$ from some set $I$
+	of indices into $\powerset{U}$.
+	The union of a family can be symbolized by $\bigcup\set{A_i\mid i\in I}$ or
+	$\bigcup_{i\in I}A_i$ or $\bigcup_i A_i$. The union of a family is the union
+	of its range.
+	We are in position now to generalize distributive laws for intersection over
+	union and union over intersection, DeMorgan's laws, and the relation of
+	order to the operations of intersection and union.
+	\subsection{Generalisation of a Cartesian product of two sets}
+	
+	Generalization of distribution laws.
+	$$
+	(\bigcup_i A_i)\cap(\bigcup_j B_j) = \bigcup_{i,j} (A_i \cap B_j)
+	(\bigcap_i A_i)\cup(\bigcap_j B_j) = \bigcap_{i,j} (A_i \cup B_j)
+	$$
+	where an index $i,j$ means an element from an index set $I\times J$.
+
+\end{document}
