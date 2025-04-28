@@ -1,0 +1,126 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{amsfonts,amsmath,amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian,english]{babel}
+
+\setlength{\parindent}{0pt}
+
+\theoremstyle{definition}
+% Numbered theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{define}[thm]{Definition}
+% Unnumbered theorems
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{define*}{Definition}
+\newtheorem*{lem*}{Lemma}
+\input{/home/alex/math/template.sty}
+
+% Print an arithmetic sequence
+\def\mysign#1{%
+	\ifodd#1 + 
+	\else -
+	\fi
+}
+
+\def\tseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	+ 
+    \repeat
+}
+
+\def\vseq#1#2#3{
+% 1:= the first term
+% 2:= total number of terms
+% 3:= the difference
+    \newcount\i
+    \newcount\loopindex
+    \loopindex=0
+    \i=#1
+    \loop
+    \advance\loopindex by 1
+    \number\i
+    \advance\i by #3 
+    \ifnum\loopindex<#2
+   	\mysign\loopindex 
+    \repeat
+}
+
+\makesequence x1n2
+
+\begin{document}
+
+\section{Булевы функции}
+Булева функция есть один из основных объектов изучения дискретной математики.
+Обозначим двухэлементное множество $\set{0, 1}$ символом $E_2$. Тогда функцию
+$f(\rseq x)$ область значений которой равна $E_2$ и область значений каждой
+переменной $x_i$ есть также $E_2$ будем называть булевой функцией от $n$
+переменных.
+Булева функция от $n$ переменных сопоставляет каждому упорядоченному набору
+составленному из $n$ элементов, $1$ и $0$, либо $1$, либо $0$.
+Две булевы функции называются равными если для любых одинаковых наборов значений
+переменных обе функции принимают одинаковые значения.
+Совокупность всех булевых функций от одной и двух переменных называется
+множеством элементарных функций. Всего существует $4$ функций от одной переменной и
+$16$ функций от двух переменных.
+
+\subsection{Свойства элементарных булевых функций}
+\begin{enumerate}
+	\item Функции конъюнкция, дизъюнкция, сумма по модулю два, стрелка Пирса, штрих
+Шеффера обладают свойством коммутативности.
+\item Функции конъюнкция, дизъюнкция, сумма по модулю два обладают свойством
+	дистрибутивности и ассоциативности.
+\item $\boolneg{x_1 \wedge x_2} = \boolneg{x_1} \vee \boolneg{x_2}$,
+	$\boolneg{x_1 \vee x_2} = \boolneg{x_1} \wedge \boolneg{x_2}$ законы де
+		Моргана
+	\item $\boolneg\boolneg x = x$ закон двойного отрицания
+	\item $x_1 \vee x_2 = x_1 \wedge x_2 \oplus x_2 \oplus x_1$ выражение
+		дизъюнкции через конъюнкцию и сумму по модулю два.
+	\item $x_1 \vee x_2 = (x_1 \implies x_2) \implies x_2$
+	\item $\boolneg x = x \mid x = x \downarrow x = x \oplus 1 = x \iff 0$
+	\item $x_1 \wedge x_2 = (x_1 \mid x_2) \mid (x_1 \mid x_2)$
+	\item $x_1 \vee x_2 = (x_1 \downarrow x_2) \downarrow (x_1 \downarrow x_2)$
+	\item $x_1 = x_1 \vee (x_1 \wedge x_2)$, $x_1 = x_1 \wedge (x_1 \vee x_2)$
+	\item $\boolneg x \vee x = \boolneg x \oplus x = 1$
+	\item $x \vee x = x$, $x \wedge x = x$
+	\item $x \oplus x = \boolneg x \wedge x = 0$
+	\item $x \wedge 0 = 0$, $x \vee 0 = x$, $x \oplus 0 = x$, $x \wedge 1 = x$,
+		$x \vee 1 = 1$, $x \oplus 1 = \boolneg x$
+	\item $x_1 \vee (\boolneg x_1 \wedge x_2) = x_1 \vee x_2$, $x_1 \wedge (x_2 \vee
+		\boolneg x_1) = x_1 \wedge x_2$
+\end{enumerate}
+
+Булеву функцию любого числа переменных можно задать формулой содержащей функции
+одной и двух переменных посредством подстановки одних булевых функций вместо
+переменных в другие булевы функции, т.е. посредством суперпозиции булевых
+функций.
+
+\subsection{Дизъюнктивные и конъюктивные нормальные формы алгебры высказываний}
+Конъюктивным одночленом от переменных $\rseq x$ называется конъюнкция этих
+переменных или их отрицаний.
+Дизъюнктивным одночленом от переменных $\rseq x$ называется дизъюнкция этих
+переменных или их отрицаний.
+
+\subsection{Совершенная дизъюктивная и совершенная конъюнктивная нормальные
+формы}
+Совершенная дизъюктивная нормальная форма (СДНФ) --- это ДНФ, в которой в каждый
+конъюнктивный одночлен каждая переменная $x_i$ из набора $f(\rseq x)$ входит
+ровно один раз, причем входит либо сама $x_i$, либо ее отрицание $\boolneg
+x_i$.
+
+\end{document}
